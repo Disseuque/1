@@ -1,14 +1,14 @@
-# Define a polÃ­tica de execuÃ§Ã£o para Bypass
+# Define a politica de execução para Bypass
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
-# Verifica se o script estÃ¡ sendo executado como administrador
+# Verifica se o script esta sendo executado como administrador
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     # Se nÃ£o estiver, abre uma nova instÃ¢ncia do PowerShell como administrador e executa o script
     Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     return
 }
 
-# FunÃ§Ã£o para verificar se o Windows Defender estÃ¡ desativado
+# Função para verificar se o Windows Defender  Está desativado
 function VerificarDefenderDesativado {
     try {
         $status = Get-MpComputerStatus
@@ -27,7 +27,7 @@ function VerificarDefenderDesativado {
     }
 }
 
-# Cumprimenta o usuÃ¡rio
+# Cumprimenta o Usuário
 Write-Host "============================================="
 Write-Host "      Bem-vindo ao Script de ConfiguraÃ§Ã£o      "
 Write-Host "============================================="
@@ -38,7 +38,7 @@ Write-Host "2 - Ativar o Modo Super Ninja"
 Write-Host "3 - Ativar o Modo Mega Ninja"
 Write-Host "============================================="
 
-# LÃª a escolha do usuÃ¡rio
+# Escolha do usuÃ¡rio
 $choice = Read-Host "Digite o nÃºmero da sua escolha"
 
 # Verifica se o Windows Defender jÃ¡ estÃ¡ desativado
@@ -48,7 +48,7 @@ if (VerificarDefenderDesativado) {
     return
 }
 
-# Executa a aÃ§Ã£o correspondente Ã  escolha do usuÃ¡rio
+# Executa a oção correspondente aescolha do usuário
 switch ($choice) {
     1 {
         Write-Host "Ativando o Modo Ninja..."
